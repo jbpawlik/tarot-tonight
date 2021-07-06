@@ -1,4 +1,4 @@
-// import $ from 'jquery';
+import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
@@ -8,8 +8,30 @@ import TarotReading from "./js/tarot.js";
 
 function getElements(response){
   console.log(response);
+  console.log(response.cards);
 
-  
+  function getRandomItem(arr) {
+    console.log(arr);
+    const randomIndex = Math.floor(Math.random()* response.cards.length);
+    const item = response.cards[randomIndex];
+    console.log(item);
+    return item;
+  }
+
+  const array = response.cards;
+  const result1 = getRandomItem(array);
+  const result2 = getRandomItem(array);
+  const result3 = getRandomItem(array);
+
+  // console.log(result);
+  // console.log(result1);
+  // console.log(result2);
+
+  $("#showName1").text(result1.name);
+  $("#showName2").text(result2.name);
+  $("#showName3").text(result3.name);
+
+
   // console.log(response.cards[0].type);
   // const key = response.cards['type'];
   // console.log(key)
