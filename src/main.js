@@ -5,9 +5,13 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 
+
 import TarotReading from "./js/tarot.js";
 
 
+let search = 'servitude';
+
+$
 
 function getElements(response){
   console.log(response);
@@ -53,11 +57,11 @@ TarotReading.getTarot()
 
 meaningStr = result2.meaning_up;
 jobSearchKeyWord = meaningStr.split(", ");
-=======
 
 let search = 'servitude';
 
 $
+
 
 SearchAdzuna.getJobs(search)
   .then(function(response) {
@@ -72,3 +76,6 @@ SearchAdzuna.getJobs(search)
     console.log(error);
     //display errors function
   });
+
+  });
+
