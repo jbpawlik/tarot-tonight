@@ -7,6 +7,7 @@ import TarotReading from "./js/tarot.js";
 import PublicHoliday from "./services/holiday.js";
 import Wiki from "./services/wiki.js";
 import Pexels from './services/pexels';
+import RestCountries from './services/countrycode.js';
 
 TarotReading.getTarot()
   .then(function(response){
@@ -66,16 +67,24 @@ Wiki.randomWiki()
   });
 
 function displayHoliday(response) {
-  let num = Math.floor(Math.random() * (10 - 1) + 1);
-  let search = response[num].localName;
+  // let num = Math.floor(Math.random() * (10 - 1) + 1);
+  let search = response[0].localName;
   Pexels.imageSearch(search)
     .then(function(response) {
-      let link = response.photos[num].src.medium;
+      let link = response.photos[0].src.medium;
       sessionStorage.setItem('link', link);
       return link;
     });
+  let countryCode = response[0].countryCode;
+  RestCountries.convertCode(countryCode)
+    .then(function(response) {
+      let country = response.name;
+      sessionStorage.setItem('country', country);
+      return country;
+    });
   let link = sessionStorage.getItem('link');
-  $('#card2Holiday').html('Celebrate the holiday of  ' + response[num].localName + "<br><img src=" + link + "><br>" + response[num].name + "<br>" + response[num].countryCode);
+  let country = sessionStorage.getItem('country');
+  $('#card2Holiday').html('Celebrate the holiday of  ' + response[0].localName + "<br><img src=" + link + "><br>" + response[0].name + "<br>" + country);
 }
 
 PublicHoliday.findHoliday()
@@ -92,10 +101,8 @@ PublicHoliday.findHoliday()
 function displayJob(response) {
   let num = Math.floor(Math.random() * (10 - 1) + 1);
   let search = response.results[0].title;
-  console.log(search);
   Pexels.imageSearch(search)
     .then(function(response) {
-      console.log(response)
       let link = response.photos[num].src.medium;
       sessionStorage.setItem('link2', link);
       return link;
