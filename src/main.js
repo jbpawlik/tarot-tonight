@@ -1,11 +1,11 @@
-
 // import SearchAdzuna from "./services/adzuna";
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import TarotReading from "./js/tarot.js";
-// import PublicHoliday from "./services/holiday.js";
+import PublicHoliday from "./services/holiday.js";
+import Wiki from "./services/wiki.js";
 
 TarotReading.getTarot()
   .then(function(response){
@@ -67,3 +67,28 @@ function getElements(response) {
 //     console.log(error);
 //     //display errors function
 //   });
+
+PublicHoliday.findHoliday()
+  .then(function(response) {
+    if (response instanceof Error) {
+      throw Error(response.message);
+    }
+    console.log(response[0].localName);
+    console.log(response[0].name);
+    console.log(response[0].countryCode);
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
+
+Wiki.randomWiki()
+  .then(function(response) {
+    if (response instanceof Error) {
+      throw Error(response.message);
+    }
+    console.log(response);
+    console.log(response.thumbnail.source);
+    console.log(response.displaytitle);
+    console.log(response.extract);
+    console.log(response.content_urls.desktop.page);
+  });
