@@ -1,16 +1,13 @@
 # __Tarot Tonight__
-
-
-
-### by 
+### by John Blalock, Erika Debelis, Maxwell Meyer, James Benjamin Pawlik, and Araceli Valdovinos
 
 
 ### __Description__
-
+Tarot Tonight is a divination app that deals three cards to the user. It then makes calls to several different APIs to retrieve information related to the cards.
 
 
 ### __Technologies Used__
-
+Tarot Tonight is made with HTML and CSS, using Bootstrap. Service and UI logic is written in JavaScript with help from JQuery. API calls are made with the Fetch API, then parsed from JSON. API calls are made to Adzuna, Wikipedia,   Postman was used to check API functioning.
 
 ### __Setup/Installation__
 1. Download or clone the [repository](http://github.com/jbpawlik/tarot-tonight to your local machine
