@@ -75,7 +75,7 @@ function displayHoliday(response) {
       return link;
     });
   let link = sessionStorage.getItem('link');
-  $('#card2Holiday').html(response[num].localName + "<br><img src=" + link + "><br>" + response[num].name + "<br>" + response[num].countryCode);
+  $('#card2Holiday').html('Celebrate the holiday of  ' + response[num].localName + "<br><img src=" + link + "><br>" + response[num].name + "<br>" + response[num].countryCode);
 }
 
 PublicHoliday.findHoliday()
@@ -90,10 +90,21 @@ PublicHoliday.findHoliday()
   });
 
 function displayJob(response) {
-  $('#card3Job').html(response.results[0].title + "<br>" + response.results[0].location.area[0] + "<a href='" + response.results[0].redirect_url + "'><br>More</a>");
+  let num = Math.floor(Math.random() * (10 - 1) + 1);
+  let search = response.results[0].title;
+  console.log(search);
+  Pexels.imageSearch(search)
+    .then(function(response) {
+      console.log(response)
+      let link = response.photos[num].src.medium;
+      sessionStorage.setItem('link2', link);
+      return link;
+    });
+  let link = sessionStorage.getItem('link2');
+  $('#card3Job').html(response.results[0].title + "<br><img src=" + link + "><br>" + response.results[0].location.area[0] + "<a href='" + response.results[0].redirect_url + "'><br>More</a>");
 }
 
-let search = 'sword';
+let search = 'wand';
 
 SearchAdzuna.getJobs(search)
   .then(function(response) {
