@@ -1,4 +1,4 @@
-// import SearchAdzuna from "./services/adzuna";
+import SearchAdzuna from "./services/adzuna";
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -6,6 +6,7 @@ import './css/styles.css';
 import TarotReading from "./js/tarot.js";
 import PublicHoliday from "./services/holiday.js";
 import Wiki from "./services/wiki.js";
+import Pexels from './services/pexels';
 
 TarotReading.getTarot()
   .then(function(response){
@@ -52,43 +53,56 @@ function getElements(response) {
 // console.log(search);
 
 
-
-
-// SearchAdzuna.getJobs(search)
-//   .then(function(response) {
-//     if (response instanceof Error) {
-//       throw Error(response.message);
-//     }
-//     console.log(response.results[0].title);
-//     console.log(response.results[0].location.area[0]);
-//     console.log(response.results[0].redirect_url);
-//   })
-//   .catch(function(error) {
-//     console.log(error);
-//     //display errors function
-//   });
-
-PublicHoliday.findHoliday()
-  .then(function(response) {
-    if (response instanceof Error) {
-      throw Error(response.message);
-    }
-    console.log(response[0].localName);
-    console.log(response[0].name);
-    console.log(response[0].countryCode);
-  })
-  .catch(function(error) {
-    console.log(error);
-  });
+function displayWiki(response) {
+  $('#card1Wiki').html(response.displaytitle + "<br><img src=" + response.thumbnail.source + "><br>" + response.extract + "<br>" + "<a href='" + response.content_urls.desktop.page + "'>More</a>");
+}
 
 Wiki.randomWiki()
   .then(function(response) {
     if (response instanceof Error) {
       throw Error(response.message);
     }
-    console.log(response);
-    console.log(response.thumbnail.source);
-    console.log(response.displaytitle);
-    console.log(response.extract);
-    console.log(response.content_urls.desktop.page);
+    displayWiki(response);
+  });
+
+function displayHoliday(response) {
+  let num = Math.floor(Math.random() * (10 - 1) + 1);
+  let search = response[num].localName;
+  Pexels.imageSearch(search)
+    .then(function(response) {
+      let link = response.photos[num].src.medium;
+      sessionStorage.setItem('link', link);
+      return link;
+    });
+  let link = sessionStorage.getItem('link');
+  $('#card2Holiday').html(response[num].localName + "<br><img src=" + link + "><br>" + response[num].name + "<br>" + response[num].countryCode);
+}
+
+PublicHoliday.findHoliday()
+  .then(function(response) {
+    if (response instanceof Error) {
+      throw Error(response.message);
+    }
+    displayHoliday(response);
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
+
+function displayJob(response) {
+  $('#card3Job').html(response.results[0].title + "<br>" + response.results[0].location.area[0] + "<a href='" + response.results[0].redirect_url + "'><br>More</a>");
+}
+
+let search = 'sword';
+
+SearchAdzuna.getJobs(search)
+  .then(function(response) {
+    if (response instanceof Error) {
+      throw Error(response.message);
+    }
+    displayJob(response);
+  })
+  .catch(function(error) {
+    console.log(error);
+    //display errors function
   });
