@@ -1,6 +1,6 @@
 export default class PublicHoliday {
   static async findHoliday() {
-    return fetch(`https://thingproxy.freeboard.io/fetch/https://date.nager.at/api/v2/NextPublicHolidaysWorldwide`, )
+    return fetch(`https://thingproxy.freeboard.io/fetch/https://date.nager.at/api/v2/NextPublicHolidaysWorldwide`)
       .then(function(response) {
         if (!response.ok) {
           throw Error(response.statusText);
