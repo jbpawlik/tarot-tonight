@@ -1,7 +1,62 @@
+.sidebar {
+  float:left;
+  width:fit-content;
+  height: auto;
+}
+.sidebar-right {
+  float:right;
+  width:fit-content;
+  height: auto;
+}
 body {
+  background-image: url(https://united-masters.imgix.net/mLePGkR2vJVW);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   text-align: center;
-  height: 80vh;
-  width: 100vw;
-
+  color:#FECEFE;
+}
+.card-body {
+  border: 9px solid rgb(150, 69, 170);
+  padding: 15px;
+  background-color: rgb(149, 205, 243);
+  width: 100%;
+  box-sizing: border-box;
+  color: #122E51;
 }
 
+#form-bar {
+  padding-top: 70px;
+  padding-bottom: 75px;
+  margin-left: 43%;
+}
+#title {
+  font-size: 3.5rem;
+  padding-top: 25px;
+  padding-bottom: 40px;
+  font-style: oblique;
+  text-shadow: 1.5px 1.5px #C1F2FF;
+}
+
+#sub {
+  margin-top: 25px;
+}
+
+.centered-text {
+  text-align: center;
+  font-weight: bold;
+  padding: 6.5px;
+}
+.btn1 {
+  background-image: url(https://cdn.discordapp.com/attachments/860001249658798131/862448825243533332/crystalball.gif);
+  width: 400px;
+  height: 170px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color:#f3e6f3;  
+  padding-top: 35px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: -100px;
+}
