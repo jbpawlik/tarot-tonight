@@ -16,7 +16,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Galactic Age',
+      title: 'Tarot Tonight',
       template: './src/index.html',
       inject: 'body'
     }),
@@ -58,3 +58,7 @@ module.exports = {
     ]
   }
 };
+
+
+//$ npm install file-loader@1.1.6 --save-dev
+//$ npm install html-loader@0.5.5 --save-dev
