@@ -1,4 +1,4 @@
-
+import SearchAdzuna from "./services/adzuna";
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -22,7 +22,7 @@ function getElements(response) {
   const result2 = getRandomItem(array);
   const result3 = getRandomItem(array);
   let img1 = (result1.name_short + '.png');
-  console.log(img1);
+  console.log("image1",img1);
   $('#showCard1').html("<img src='assets/images/" + img1 + "' width='250' height='auto'></img>");
   let img2 = (result2.name_short + '.png');
   $('#showCard2').html("<img src='assets/images/" + img2 + "' width='250' height='auto'></img>");
@@ -51,37 +51,6 @@ function getRandomItem() {
   const item = response.cards[randomIndex];
   return item;
 }
-
-// function getElements(response) {
-//   const array = response.cards;
-//   const result1 = getRandomItem(array);
-//   const result2 = getRandomItem(array);
-//   const result3 = getRandomItem(array);
-
-//   $("#showCard1").html(`<img src=result1.name_short`);
-//   $("#showCard2").html(`<img src=result2.name_short`);
-//   $("#showCard3").html(`<img src=result3.name_short`);
-
-//   $("#showName1").text(result1.name);
-//   $("#showName2").text(result2.name);
-//   $("#showName3").text(result3.name);
-
-//   $("#showDescription1").text(result1.desc);
-//   $("#showDescription2").text(result2.desc);
-//   $("#showDescription3").text(result3.desc);
-
-//   $("#showMeaning1").text(result1.meaning_up);
-//   $("#showMeaning2").text(result2.meaning_up);
-//   $("#showMeaning3").text(result3.meaning_up);
-
-//   function getRandomItem() {
-//     const randomIndex = Math.floor(Math.random()* response.cards.length);
-//     const item = response.cards[randomIndex];
-//     return item;
-//   }
-// }
-
-
 
 function displayWiki(response) {
   $('#card1Wiki').html(response.displaytitle + "<br><img src=" + response.thumbnail.source + "><br>" + response.extract + "<br>" + "<a href='" + response.content_urls.desktop.page + "'>More</a>");
