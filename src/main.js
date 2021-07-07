@@ -4,28 +4,10 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-
-
 import TarotReading from "./js/tarot.js";
 
 
-let search = 'servitude';
-
-$
-
 function getElements(response){
-  console.log(response);
-  console.log(response.cards);
-
-  function getRandomItem(arr) {
-    console.log(arr);
-    const randomIndex = Math.floor(Math.random()* response.cards.length);
-    const item = response.cards[randomIndex];
-    console.log(item);
-    return item;
-  }
-  
-
   const array = response.cards;
   const result1 = getRandomItem(array);
   const result2 = getRandomItem(array);
@@ -47,20 +29,28 @@ function getElements(response){
   $("#showMeaning2").text(result2.meaning_up);
   $("#showMeaning3").text(result3.meaning_up);
 
-
+  function getRandomItem(arr) {
+    console.log(arr);
+    const randomIndex = Math.floor(Math.random()* response.cards.length);
+    const item = response.cards[randomIndex];
+    console.log(item);
+    return item;
   
+  }
+
+}
 
 TarotReading.getTarot()
   .then(function(response){
     getElements(response);
   });
 
-meaningStr = result2.meaning_up;
-jobSearchKeyWord = meaningStr.split(", ");
+
 
 let search = 'servitude';
+console.log(search);
 
-$
+
 
 
 SearchAdzuna.getJobs(search)
@@ -77,5 +67,5 @@ SearchAdzuna.getJobs(search)
     //display errors function
   });
 
-  };
+  
 
