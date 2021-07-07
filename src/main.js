@@ -1,4 +1,4 @@
-import SearchAdzuna from "./services/adzuna";
+
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,24 +9,25 @@ import Wiki from "./services/wiki.js";
 import Pexels from './services/pexels';
 
 TarotReading.getTarot()
-  .then(function(response){
-    getElements(response);
+  .then(function(response) {
     let majorArcana = JSON.stringify(response);
     sessionStorage.setItem('major arcana', majorArcana);
   });
 
-let majorArcana = JSON.parse(sessionStorage.getItem('major arcana'));
-console.log(majorArcana);
+let response = JSON.parse(sessionStorage.getItem('major arcana'));
 
 function getElements(response) {
   const array = response.cards;
   const result1 = getRandomItem(array);
   const result2 = getRandomItem(array);
   const result3 = getRandomItem(array);
-
-  $("#showCard1").html(`<img src=result1.name_short`);
-  $("#showCard2").html(`<img src=result2.name_short`);
-  $("#showCard3").html(`<img src=result3.name_short`);
+  let img1 = (result1.name_short + '.png');
+  console.log(img1);
+  $('#showCard1').html("<img src='assets/images/" + img1 + "' width='250' height='auto'></img>");
+  let img2 = (result2.name_short + '.png');
+  $('#showCard2').html("<img src='assets/images/" + img2 + "' width='250' height='auto'></img>");
+  let img3 = (result3.name_short + '.png');
+  $('#showCard3').html("<img src='assets/images/" + img3 + "' width='250' height='auto'></img>");
 
   $("#showName1").text(result1.name);
   $("#showName2").text(result2.name);
@@ -39,13 +40,46 @@ function getElements(response) {
   $("#showMeaning1").text(result1.meaning_up);
   $("#showMeaning2").text(result2.meaning_up);
   $("#showMeaning3").text(result3.meaning_up);
-
-  function getRandomItem() {
-    const randomIndex = Math.floor(Math.random()* response.cards.length);
-    const item = response.cards[randomIndex];
-    return item;
-  }
 }
+
+$('body').click(function() {
+  getElements(response);
+});
+
+function getRandomItem() {
+  const randomIndex = Math.floor(Math.random()* response.cards.length);
+  const item = response.cards[randomIndex];
+  return item;
+}
+
+// function getElements(response) {
+//   const array = response.cards;
+//   const result1 = getRandomItem(array);
+//   const result2 = getRandomItem(array);
+//   const result3 = getRandomItem(array);
+
+//   $("#showCard1").html(`<img src=result1.name_short`);
+//   $("#showCard2").html(`<img src=result2.name_short`);
+//   $("#showCard3").html(`<img src=result3.name_short`);
+
+//   $("#showName1").text(result1.name);
+//   $("#showName2").text(result2.name);
+//   $("#showName3").text(result3.name);
+
+//   $("#showDescription1").text(result1.desc);
+//   $("#showDescription2").text(result2.desc);
+//   $("#showDescription3").text(result3.desc);
+
+//   $("#showMeaning1").text(result1.meaning_up);
+//   $("#showMeaning2").text(result2.meaning_up);
+//   $("#showMeaning3").text(result3.meaning_up);
+
+//   function getRandomItem() {
+//     const randomIndex = Math.floor(Math.random()* response.cards.length);
+//     const item = response.cards[randomIndex];
+//     return item;
+//   }
+// }
 
 
 

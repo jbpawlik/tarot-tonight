@@ -1,6 +1,6 @@
 export default class SearchAdzuna {
   static async getJobs(search) {
-    return fetch(`https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=cd92142a&app_key=${process.env.Adzuna_API_KEY}&what=${search}`)
+    return fetch(`https://thingproxy.freeboard.io/fetch/https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=c736b32e&app_key=${process.env.Adzuna_API_KEY}&what=${search}`)
       .then(function(response) {
         if (!response.ok) {
           throw Error(response.statusText);
