@@ -24,7 +24,6 @@ body {
   box-sizing: border-box;
   color: #122E51;
 }
-
 #form-bar {
   padding-top: 70px;
   padding-bottom: 75px;
@@ -37,11 +36,9 @@ body {
   font-style: oblique;
   text-shadow: 1.5px 1.5px #C1F2FF;
 }
-
 #sub {
   margin-top: 25px;
 }
-
 .centered-text {
   text-align: center;
   font-weight: bold;

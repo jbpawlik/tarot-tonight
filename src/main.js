@@ -42,7 +42,7 @@ function getElements(response) {
   $("#showMeaning3").text(result3.meaning_up);
 }
 
-$('body').click(function() {
+$('#sub').click(function() {
   getElements(response);
 });
 
@@ -94,7 +94,7 @@ function displayJob(response) {
   console.log(search);
   Pexels.imageSearch(search)
     .then(function(response) {
-      console.log(response)
+      console.log(response);
       let link = response.photos[num].src.medium;
       sessionStorage.setItem('link2', link);
       return link;
@@ -103,7 +103,7 @@ function displayJob(response) {
   $('#card3Job').html(response.results[0].title + "<br><img src=" + link + "><br>" + response.results[0].location.area[0] + "<a href='" + response.results[0].redirect_url + "'><br>More</a>");
 }
 
-let search = 'wand';
+let search = response.meaning_up;
 
 SearchAdzuna.getJobs(search)
   .then(function(response) {
