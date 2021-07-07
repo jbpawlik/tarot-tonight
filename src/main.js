@@ -1,13 +1,23 @@
 
-import SearchAdzuna from "./services/adzuna";
+// import SearchAdzuna from "./services/adzuna";
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import TarotReading from "./js/tarot.js";
+// import PublicHoliday from "./services/holiday.js";
 
+TarotReading.getTarot()
+  .then(function(response){
+    getElements(response);
+    let majorArcana = JSON.stringify(response);
+    sessionStorage.setItem('major arcana', majorArcana);
+  });
 
-function getElements(response){
+let majorArcana = JSON.parse(sessionStorage.getItem('major arcana'));
+console.log(majorArcana);
+
+function getElements(response) {
   const array = response.cards;
   const result1 = getRandomItem(array);
   const result2 = getRandomItem(array);
@@ -29,43 +39,31 @@ function getElements(response){
   $("#showMeaning2").text(result2.meaning_up);
   $("#showMeaning3").text(result3.meaning_up);
 
-  function getRandomItem(arr) {
-    console.log(arr);
+  function getRandomItem() {
     const randomIndex = Math.floor(Math.random()* response.cards.length);
     const item = response.cards[randomIndex];
-    console.log(item);
     return item;
-  
   }
-
 }
 
-TarotReading.getTarot()
-  .then(function(response){
-    getElements(response);
-  });
 
 
-
-let search = 'servitude';
-console.log(search);
+// let search = 'servitude';
+// console.log(search);
 
 
 
 
-SearchAdzuna.getJobs(search)
-  .then(function(response) {
-    if (response instanceof Error) {
-      throw Error(response.message);
-    }
-    console.log(response.results[0].title);
-    console.log(response.results[0].location.area[0]);
-    console.log(response.results[0].redirect_url);
-  })
-  .catch(function(error) {
-    console.log(error);
-    //display errors function
-  });
-
-  
-
+// SearchAdzuna.getJobs(search)
+//   .then(function(response) {
+//     if (response instanceof Error) {
+//       throw Error(response.message);
+//     }
+//     console.log(response.results[0].title);
+//     console.log(response.results[0].location.area[0]);
+//     console.log(response.results[0].redirect_url);
+//   })
+//   .catch(function(error) {
+//     console.log(error);
+//     //display errors function
+//   });
