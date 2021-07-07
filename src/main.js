@@ -23,9 +23,12 @@ function getElements(response) {
   const result2 = getRandomItem(array);
   const result3 = getRandomItem(array);
 
-  $("#showCard1").html(`<img src=result1.name_short`);
-  $("#showCard2").html(`<img src=result2.name_short`);
-  $("#showCard3").html(`<img src=result3.name_short`);
+  $("#showCard1").html(`<img src= ../assets/images/${result1.name_short}.png>`);
+  $("#showCard2").html(`<img src= ../assets/images/${result2.name_short}.png>`);
+  $("#showCard3").html(`<img src= ../assets/images/${result3.name_short}.png>`);
+
+  console.log("image:",result1.name_short);
+  console.log("image string", `<img src= src/assets/images/${result1.name_short}.png>`)
 
   $("#showName1").text(result1.name);
   $("#showName2").text(result2.name);
