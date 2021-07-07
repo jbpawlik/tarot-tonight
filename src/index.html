@@ -6,8 +6,45 @@
   <title>Document</title>
 </head>
 <body>
-  <input type="text" id="userInput">
-  <button type="button">enter</button>
+  <h2>Tarot Tonight</h2>
+  <br>
+  <br>
+  <form class="row gx-3 gy-2 align-items-center">
+    <div class="col-sm-3">
+      <label class="visually-hidden" for="specificSizeInputName">Name</label>
+      <input type="text" class="form-control" id="specificSizeInputName" placeholder="Your name">
+    </div>
+    <div class="col-sm-3">
+      <label class="visually-hidden" for="specificSizeInputGroupUsername">Topic</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="specificSizeInputGroupUsername" placeholder="school/work/love">
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <label class="visually-hidden" for="specificSizeSelect">Number of cards to pull</label>
+      <select class="form-select" id="specificSizeSelect">
+        <option selected>Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+        <option value="4">One</option>
+        <option value="5">Two</option>
+        <option value="6">Three</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="autoSizingCheck2">
+        <label class="form-check-label" for="autoSizingCheck2">
+          Remember me
+        </label>
+      </div>
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-outline-info">Submit</button>
+    </div>
+  </form>
+  </form>
   <div class="container">
     <div class="row">
       <div class="col-sm">
