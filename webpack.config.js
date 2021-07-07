@@ -48,17 +48,14 @@ module.exports = {
           }
         ]
       },
-      
       {
         test:/\.html$/,
         use: [
           'html-loader'
         ]
       },
+      
     ]
   }
 };
 
-
-//$ npm install file-loader@1.1.6 --save-dev
-//$ npm install html-loader@0.5.5 --save-dev
