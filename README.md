@@ -22,10 +22,10 @@ Tarot Tonight is made with HTML and CSS, using Bootstrap. Service and UI logic i
 11. Any API errors will be reported in a text field on the site. Information about API errors can be found [here](https://blog.runscope.com/posts/how-to-debug-common-api-errors)
 
 ### __Known Bugs / Future Goals__
-No bugs have been found or reported. Please contact the author if you experience poor performance.
+No bugs have been found or reported. Please contact the authors if you experience poor performance.
 
 Future goals for Tarot Tonight:
-1. Connect to an event app to suggest upcoming events.
+1. Connect to an event API to suggest upcoming events.
 
 
 ### __License__
@@ -36,4 +36,4 @@ This software is licensed under the [BSD license](license.txt).
 Copyright (c) 2021 
 
 ### __Contact Information__
-Contact the authors at __james.benjamin.pawlik@gmail.com__
+Contact the authors: __[John Blalock](), [Erika Debelis](), [Maxwell Meyer](), [James Benjamin Pawlik](james.benjamin.pawlik@gmail.com), [Araceli Valdovinos]()__

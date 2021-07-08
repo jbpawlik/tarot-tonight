@@ -12,6 +12,7 @@ body {
   background-image: url(https://united-masters.imgix.net/mLePGkR2vJVW);
   background-position: center;
   background-size: cover;
+  background-color: black;
   background-repeat: no-repeat;
   text-align: center;
   color:#FECEFE;
@@ -23,6 +24,7 @@ body {
   width: 100%;
   box-sizing: border-box;
   color: #122E51;
+  height: 40em;
 }
 #form-bar {
   padding-top: 70px;
@@ -56,4 +58,11 @@ body {
   font-size: 1.5rem;
   font-weight: bold;
   margin-left: -100px;
+}
+#pastLife, #presentReality, #futurePurpose {
+  display: none;
+}
+#past, #present, #future {
+  display: none;
+  margin: 1em;
 }
