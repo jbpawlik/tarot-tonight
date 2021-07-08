@@ -9,13 +9,7 @@ import Wiki from "./services/wiki.js";
 import Pexels from './services/pexels';
 import RestCountries from './services/countrycode';
 
-TarotReading.getTarot()
-  .then(function(response) {
-    let majorArcana = JSON.stringify(response);
-    sessionStorage.setItem('major arcana', majorArcana);
-  });
 
-let response = JSON.parse(sessionStorage.getItem('major arcana'));
 
 function getElements(response) {
   const array = response.cards;
@@ -45,6 +39,7 @@ function getElements(response) {
 }
 
 function getRandomItem() {
+  let response = JSON.parse(sessionStorage.getItem('major arcana'));
   const randomIndex = Math.floor(Math.random()* response.cards.length);
   const item = response.cards[randomIndex];
   return item;
@@ -52,6 +47,16 @@ function getRandomItem() {
 
 $('#sub').click(function(event) {
   event.preventDefault();
+
+  TarotReading.getTarot()
+    .then(function(response) {
+      let majorArcana = JSON.stringify(response);
+      sessionStorage.setItem('major arcana', majorArcana);
+    });
+
+  let response = JSON.parse(sessionStorage.getItem('major arcana'));
+
+
   getElements(response);
   $('#cards').show();
   $('#past').show();
@@ -99,7 +104,7 @@ $('#present').click(function(event) {
     let country = sessionStorage.getItem('country');
     $('#card2Holiday').html('Celebrate the holiday of  ' + response[0].localName + "<br><img src=" + link + " width=300px><br>" + response[0].name + "<br>" + country);
   }
-  
+
   PublicHoliday.findHoliday()
     .then(function(response) {
       if (response instanceof Error) {
