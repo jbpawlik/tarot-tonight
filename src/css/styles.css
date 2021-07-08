@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
 .sidebar {
   float:left;
   width:fit-content;
@@ -9,6 +11,7 @@
   height: auto;
 }
 body {
+  font-family: 'Press Start 2P', cursive;
   background-image: url(https://united-masters.imgix.net/mLePGkR2vJVW);
   background-position: center;
   background-size: cover;
