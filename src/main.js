@@ -90,11 +90,10 @@ $('#present').click(function(event) {
   event.preventDefault();
 
   function displayHoliday(response) {
-    let num = Math.floor(Math.random() * (10 - 1) + 1);
     let search = response[0].localName;
     Pexels.imageSearch(search)
       .then(function(response) {
-        let link = response.photos[num].src.medium;
+        let link = response.photos[0].src.medium;
         sessionStorage.setItem('link', link);
         return link;
       });
