@@ -66,3 +66,6 @@ body {
   display: none;
   margin: 1em;
 }
+#cardHolder {
+  display: none;
+}

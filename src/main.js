@@ -1,4 +1,3 @@
-import SearchAdzuna from "./services/adzuna";
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,8 +7,7 @@ import PublicHoliday from "./services/holiday.js";
 import Wiki from "./services/wiki.js";
 import Pexels from './services/pexels';
 import RestCountries from './services/countrycode';
-
-
+import SearchAdzuna from "./services/adzuna";
 
 function getElements(response) {
   const array = response.cards;
@@ -19,6 +17,7 @@ function getElements(response) {
   sessionStorage.setItem('result3', result3.meaning_up); //I need this in a later function - Ben
 
   let img1 = (result1.name_short + '.png');
+  console.log(img1)
   $('#showPic1').html("<img src='assets/images/" + img1 + "' width='250' height='auto'></img>");
   let img2 = (result2.name_short + '.png');
   $('#showPic2').html("<img src='assets/images/" + img2 + "' width='250' height='auto'></img>");
@@ -152,9 +151,3 @@ $('#future').click(function(event) {
 
   $('#futurePurpose').show();
 });
-
-
-
-
-
-
