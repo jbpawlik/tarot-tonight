@@ -17,7 +17,6 @@ function getElements(response) {
   sessionStorage.setItem('result3', result3.meaning_up); //I need this in a later function - Ben
 
   let img1 = (result1.name_short + '.png');
-  console.log(img1)
   $('#showPic1').html("<img src='assets/images/" + img1 + "' width='250' height='auto'></img>");
   let img2 = (result2.name_short + '.png');
   $('#showPic2').html("<img src='assets/images/" + img2 + "' width='250' height='auto'></img>");
@@ -63,8 +62,7 @@ $('#sub').click(function(event) {
   $('#future').show();
 });
 
-$('#past').click(function(event) {
-  event.preventDefault();
+$('#past').click(function() {
 
   function displayWiki(response) {
     $('#card1Wiki').html(response.displaytitle + "<br><img src=" + response.thumbnail.source + "><br>" + response.extract + "<br>" + "<a href='" + response.content_urls.desktop.page + "' width=300px>More</a>");
@@ -80,8 +78,7 @@ $('#past').click(function(event) {
   $('#pastLife').show();
 });
 
-$('#present').click(function(event) {
-  event.preventDefault();
+$('#present').click(function() {
 
   function displayHoliday(response) {
     let num = Math.floor(Math.random() * (10 - 1) + 1);
@@ -117,8 +114,7 @@ $('#present').click(function(event) {
   $('#presentReality').show();
 });
 
-$('#future').click(function(event) {
-  event.preventDefault();
+$('#future').click(function() {
 
   function displayJob(response) {
     let num = Math.floor(Math.random() * (10 - 1) + 1);
