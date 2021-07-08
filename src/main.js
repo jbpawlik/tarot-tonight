@@ -18,12 +18,12 @@ function getElements(response) {
   const result3 = getRandomItem(array);
   sessionStorage.setItem('result3', result3.meaning_up); //I need this in a later function - Ben
 
-  // let img1 = (result1.name_short + '.png');
-  // $('#showCard1').html("<img src='assets/images/" + img1 + "' width='250' height='auto'></img>");
-  // let img2 = (result2.name_short + '.png');
-  // $('#showCard2').html("<img src='assets/images/" + img2 + "' width='250' height='auto'></img>");
-  // let img3 = (result3.name_short + '.png');
-  // $('#showCard3').html("<img src='assets/images/" + img3 + "' width='250' height='auto'></img>");
+  let img1 = (result1.name_short + '.png');
+  $('#showPic1').html("<img src='assets/images/" + img1 + "' width='250' height='auto'></img>");
+  let img2 = (result2.name_short + '.png');
+  $('#showPic2').html("<img src='assets/images/" + img2 + "' width='250' height='auto'></img>");
+  let img3 = (result3.name_short + '.png');
+  $('#showPic3').html("<img src='assets/images/" + img3 + "' width='250' height='auto'></img>");
 
   $("#showName1").text(result1.name);
   $("#showName2").text(result2.name);
