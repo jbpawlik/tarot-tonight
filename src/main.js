@@ -7,15 +7,15 @@ import PublicHoliday from "./services/holiday.js";
 import Wiki from "./services/wiki.js";
 import Pexels from './services/pexels';
 import RestCountries from './services/countrycode';
-import SearchAdzuna from "./services/adzuna";
-// import PredictHQ from './services/predicthq';
+// import SearchAdzuna from "./services/adzuna"; //temporarily deprecated
+import PredictHQ from './services/predicthq';
 
 function getElements(response) {
   const array = response.cards;
   let result1 = getRandomItem(array);
   let result2 = getRandomItem(array);
   let result3 = getRandomItem(array);
-  sessionStorage.setItem('result3', result3.meaning_up); //I need this in a later function - Ben
+  sessionStorage.setItem('result3', result3.name);
 
   let img1 = (result1.name_short + '.png');
   $('#showPic1').html("<img src='assets/images/" + img1 + "' width='250' height='auto'></img>");
@@ -28,6 +28,7 @@ function getElements(response) {
   $("#showName2").text(result2.name);
   $("#showName3").text(result3.name);
 
+  //Not used at present, may need for future
   // $("#showDescription1").text(result1.desc);
   // $("#showDescription2").text(result2.desc);
   // $("#showDescription3").text(result3.desc);
@@ -44,6 +45,8 @@ function getRandomItem() {
   return item;
 }
 
+
+//Card Draw - Tarot API call
 $('#sub').click(function(event) {
   event.preventDefault();
 
@@ -63,6 +66,8 @@ $('#sub').click(function(event) {
   $('#future').show();
 });
 
+
+//Past Life - MediaWiki API Call
 $('#past').click(function(event) {
   event.preventDefault();
 
@@ -80,6 +85,7 @@ $('#past').click(function(event) {
   $('#pastLife').show();
 });
 
+//Present Reality - Nager Date, Pexels, restcountries API calls
 $('#present').click(function(event) {
   event.preventDefault();
 
@@ -117,12 +123,14 @@ $('#present').click(function(event) {
   $('#presentReality').show();
 });
 
+
+//Future Purpose - Predict HQ, Pexels API calls
 $('#future').click(function(event) {
   event.preventDefault();
 
-  function displayJob(response) {
-    let num = Math.floor(Math.random() * (10 - 1) + 1);
+  function displayEvent(response) {
     let search = response.results[0].title;
+    let num = Math.floor(Math.random() * (10 - 1) + 1);
     Pexels.imageSearch(search)
       .then(function(response) {
         let link = response.photos[num].src.medium;
@@ -130,35 +138,56 @@ $('#future').click(function(event) {
         return link;
       });
     let link = sessionStorage.getItem('link2');
-    $('#card3Job').html(response.results[0].title + "<br><br><img src=" + link + "><br><br>" + response.results[0].location.area[0] + "<a href='" + response.results[0].redirect_url + "' width=300px><br><br>More</a>");
+    $('#card3Job').html(response.results[0].title + "<br><br><img src='" + link + "' width=300px><br><br>" + response.results[0].description + '<br><br>' + response.results[0].country);
   }
 
   let result3 = sessionStorage.getItem('result3');
   let search = result3;
 
-  SearchAdzuna.getJobs(search)
+  PredictHQ.findEvents(search)
     .then(function(response) {
       if (response instanceof Error) {
         throw Error(response.message);
       }
-      displayJob(response);
+      displayEvent(response);
     })
     .catch(function(error) {
       console.log(error);
     });
-
   $('#futurePurpose').show();
 });
 
-// //Predict HQ
+// Future Purpose - Adzuna, Pexels API calls
+//Job search function temporarily removed because Adzuna API became unavailable
 // $('#future').click(function(event) {
 //   event.preventDefault();
 
-//   let result3 = sessionStorage.getItem('result3');
-//   let search = 'wand';
-
-//   PredictHQ.findEvents(search)
-//   .then(function(response) {
-
+//   function displayJob(response) {
+//     let num = Math.floor(Math.random() * (10 - 1) + 1);
+//     let search = response.results[0].title;
+//     Pexels.imageSearch(search)
+//       .then(function(response) {
+//         let link = response.photos[num].src.medium;
+//         sessionStorage.setItem('link2', link);
+//         return link;
+//       });
+//     let link = sessionStorage.getItem('link2');
+//     $('#card3Job').html(response.results[0].title + "<br><br><img src=" + link + " width=300px><br><br>" + response.results[0].location.area[0] + "<a href='" + response.results[0].redirect_url + "' ><br><br>More</a>");
 //   }
+
+//   let result3 = sessionStorage.getItem('result3');
+//   let search = result3;
+
+//   SearchAdzuna.getJobs(search)
+//     .then(function(response) {
+//       if (response instanceof Error) {
+//         throw Error(response.message);
+//       }
+//       displayJob(response);
+//     })
+//     .catch(function(error) {
+//       console.log(error);
+//     });
+
+//   $('#futurePurpose').show();
 // });
