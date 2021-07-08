@@ -63,7 +63,7 @@ $('#past').click(function(event) {
   event.preventDefault();
 
   function displayWiki(response) {
-    $('#card1Wiki').html(response.displaytitle + "<br><img src=" + response.thumbnail.source + "><br>" + response.extract + "<br>" + "<a href='" + response.content_urls.desktop.page + "'>More</a>");
+    $('#card1Wiki').html(response.displaytitle + "<br><img src=" + response.thumbnail.source + "><br>" + response.extract + "<br>" + "<a href='" + response.content_urls.desktop.page + "' width=300px>More</a>");
   }
 
   Wiki.randomWiki()
@@ -97,7 +97,7 @@ $('#present').click(function(event) {
       });
     let link = sessionStorage.getItem('link');
     let country = sessionStorage.getItem('country');
-    $('#card2Holiday').html('Celebrate the holiday of  ' + response[0].localName + "<br><img src=" + link + "><br>" + response[0].name + "<br>" + country);
+    $('#card2Holiday').html('Celebrate the holiday of  ' + response[0].localName + "<br><img src=" + link + " width=300px><br>" + response[0].name + "<br>" + country);
   }
   
   PublicHoliday.findHoliday()
@@ -126,7 +126,7 @@ $('#future').click(function(event) {
         return link;
       });
     let link = sessionStorage.getItem('link2');
-    $('#card3Job').html(response.results[0].title + "<br><img src=" + link + "><br>" + response.results[0].location.area[0] + "<a href='" + response.results[0].redirect_url + "'><br>More</a>");
+    $('#card3Job').html(response.results[0].title + "<br><img src=" + link + "><br>" + response.results[0].location.area[0] + "<a href='" + response.results[0].redirect_url + "' width=300px><br>More</a>");
   }
 
   let result3 = sessionStorage.getItem('result3');
