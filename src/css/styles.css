@@ -53,7 +53,7 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  color:#f3e6f3;  
+  color:#f3e6f3;
   padding-top: 35px;
   font-size: 1.5rem;
   font-weight: bold;
@@ -61,13 +61,26 @@ body {
 }
 #pastLife, #presentReality, #futurePurpose {
   display: none;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+
+}
+.card-body2 {
+  border: 9px solid rgb(150, 69, 170);
+  padding: 15px;
+  background-color: rgb(149, 205, 243);
+  width: 100%;
+  box-sizing: border-box;
+  color: #122E51;
+  height: 40em;
+  white-space: wrap;
+  overflow-y: scroll;
+  max-width: 100%;
+}
+.card-body2::-webkit-scrollbar {
+  display: none;
 }
 #past, #present, #future {
   display: none;
-  margin: 1em;
+  margin-top: .5em;
 }
 #cardHolder {
   display: none;
