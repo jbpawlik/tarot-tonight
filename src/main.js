@@ -8,12 +8,13 @@ import Wiki from "./services/wiki.js";
 import Pexels from './services/pexels';
 import RestCountries from './services/countrycode';
 import SearchAdzuna from "./services/adzuna";
+// import PredictHQ from './services/predicthq';
 
 function getElements(response) {
   const array = response.cards;
-  const result1 = getRandomItem(array);
-  const result2 = getRandomItem(array);
-  const result3 = getRandomItem(array);
+  let result1 = getRandomItem(array);
+  let result2 = getRandomItem(array);
+  let result3 = getRandomItem(array);
   sessionStorage.setItem('result3', result3.meaning_up); //I need this in a later function - Ben
 
   let img1 = (result1.name_short + '.png');
@@ -62,7 +63,8 @@ $('#sub').click(function(event) {
   $('#future').show();
 });
 
-$('#past').click(function() {
+$('#past').click(function(event) {
+  event.preventDefault();
 
   function displayWiki(response) {
     $('#card1Wiki').html(response.displaytitle + "<br><br><img src=" + response.thumbnail.source + "><br><br>" + response.extract + "<br><br>" + "<a href='" + response.content_urls.desktop.page + "' width=300px>More</a>");
@@ -78,7 +80,8 @@ $('#past').click(function() {
   $('#pastLife').show();
 });
 
-$('#present').click(function() {
+$('#present').click(function(event) {
+  event.preventDefault();
 
   function displayHoliday(response) {
     let num = Math.floor(Math.random() * (10 - 1) + 1);
@@ -114,7 +117,8 @@ $('#present').click(function() {
   $('#presentReality').show();
 });
 
-$('#future').click(function() {
+$('#future').click(function(event) {
+  event.preventDefault();
 
   function displayJob(response) {
     let num = Math.floor(Math.random() * (10 - 1) + 1);
@@ -143,6 +147,18 @@ $('#future').click(function() {
       console.log(error);
     });
 
-
   $('#futurePurpose').show();
 });
+
+// //Predict HQ
+// $('#future').click(function(event) {
+//   event.preventDefault();
+
+//   let result3 = sessionStorage.getItem('result3');
+//   let search = 'wand';
+
+//   PredictHQ.findEvents(search)
+//   .then(function(response) {
+
+//   }
+// });
