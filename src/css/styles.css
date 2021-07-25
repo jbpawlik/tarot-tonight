@@ -27,7 +27,12 @@ body {
   width: 100%;
   box-sizing: border-box;
   color: #122E51;
-  height: 42em;
+  height: 50em;
+  overflow-y: scroll;
+}
+.card-body::-webkit-scrollbar {
+  display: none;
+
 }
 #form-bar {
   padding-top: 70px;
@@ -73,7 +78,7 @@ body {
   width: 100%;
   box-sizing: border-box;
   color: #122E51;
-  height: 40em;
+  height: 45em;
   white-space: wrap;
   overflow-y: scroll;
   max-width: 100%;
